@@ -55,3 +55,97 @@ let a =10;
 a='abc';
 a=true;
 console.log(a);
+
+//Operators - Special symbol used to perform opeartion on values and variables
+//Assigment
+let x=10;
+//Arthematic
+let y=5;
+console.log(x+y); //x-y,x*y,x/y,x%y,++x,--y etc
+//Comparision
+console.log(x==y); // Compares only values
+console.log(x===y);//Compares values and datatype
+//Other types !=, !==, >,>=,<,<= etc
+//Logical - &&,||,!
+//String
+//Concatination(+) - If used with String it will concatinate, if used with number it will add
+//Ternary operator - condition?true:false;
+
+
+//Type Conversion
+//Implicit conversion - also known as type coercion where javascript will automatically do
+console.log(2+'3');//23
+console.log(true+'3')//true3
+console.log(true+3); // 4
+console.log('4'-'3');//1
+console.log('a'-'b')//NaN
+console.log(5-null);//5
+console.log(5-undefined)//NaN - undefined with any operator is NaN
+//Explicit conversion - we maust manually do
+//For this we use predefined methods
+console.log(Number('5'));//Converting string to number
+console.log(parseInt('4'));
+console.log(parseFloat('3.14'));
+console.log(Number(null));// Will be zero for null,'',false and 1 for true
+
+console.log(String('500'));//Conerting number to string
+console.log(String(true));//Will be undefined same for null, false, true
+console.log((500).toString()); //null and undefined don't work
+
+console.log(Boolean(-9))//Will be true if other than zero and false only for 0, undefined, null, '' and NaN
+console.log(Boolean(    ));//false
+
+//Equality
+//== (Allows coercion)
+//=== (Doesn't allow coercion)
+let var1 = 'test';
+let var2 = 'test';
+console.log(var1==var2);//true
+console.log(var1===var2);//true
+//If var1 is 10 and var2 is '10' first console will return true, second one false
+//If we use null, undefined, '', 0 are are treated a false during coercion. Hence it if better to use === for comparision
+
+//Conditional Statements
+//if, else, else if, switch
+
+//Looping code
+//for, while, do while, for of
+//for of - loop over collection of data (for eg arrays)
+const array = [1,2,3,4,5];
+for(const arr of array){
+    console.log(arr);
+}
+
+//Functions - building blocks of javascript, it is a block of code designed to perform a perticular task
+function greet(){
+    console.log("Good morning");
+}
+
+greet();
+
+function greet(username){
+    console.log('Good morning '+ username);
+}
+
+greet('ABC');
+
+function sumTwo(a,b){
+    return a+b;
+}
+
+console.log(sumTwo(5,5));
+//Arrow functions
+
+const addNumbers = (a,b)=>{
+    return a+b;
+} // const addNumbers = (a,b)=>a+b;
+
+console.log(addNumbers(10,15));
+
+const addFive = num =>num+5;
+console.log(addFive(5));
+
+//Scope - determines accessability and visibility of variables
+//Block scope - variables declared inside a block (let say a if block) can be accessed only in that block
+//Function scope - variables declared inside a function can be accessed only in that function
+//Glocal scope - Can be accessed in if block and function
