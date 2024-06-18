@@ -156,3 +156,33 @@ SuperHero.prototype.fightCrime = function (){
     console.log('Fighting crime');
 }
 console.log(batman.fullName());
+
+//Class - Classes are just a syntactical sugar over what was already existing in javascript (especially 
+// on prototype and protypal inheritance)
+//Let convert above prototype and prototypal inheritance code into class
+class PersonClass {
+    constructor(fName, lName){
+        this.firstName = fName;
+        this.lastName = lName;
+    }
+    //We will define other methods here insode class instead of defining separately using protytpe (line 139)
+    sayMyName(){
+        return this.firstName+ " " + this.lastName;
+    }
+}
+const classP1 = new PersonClass('Bruce', 'Wayne');
+console.log(classP1.sayMyName());
+//Converting prototypal inheritance code
+class NewSuperHero extends PersonClass{
+    constructor(fName, lName){
+        super(fName, lName);
+        this.isSuperhero = true;
+    }
+
+    fightCrime(){
+        console.log("Fights crime");
+    }
+}
+
+const newSuperhero = new NewSuperHero('Clark', 'Kent');
+console.log(newSuperhero.sayMyName());
