@@ -186,3 +186,59 @@ class NewSuperHero extends PersonClass{
 
 const newSuperhero = new NewSuperHero('Clark', 'Kent');
 console.log(newSuperhero.sayMyName());
+
+//Iterables and Iteraters
+//In Javascript we perform iteration using for loop(for eg) using i variable.
+//This has two problems - 1) We need to figure out how to access each element in the string/array (We use i to do this)
+//Accessing the element will be different for different datatypes (in String we use charAt, in array we use arr[i])
+//We needed an abstraction on how to access elements and works across different data structres. Hence Iterables and Iteraters are introduced.
+//To achieve this in 2015 two new protocols (Iterable and Iteraters) were introduced and ecided that some of teh data structers implement these protocols by default.
+//They include string, array, map and set. One ierator example is for of loop.
+//There are some of set of rules for the object to be iterable.
+//Creating our own iterable
+const obj = {
+    [Symbol.iterator]: function(){
+        let step = 0;
+        const iterator = {
+          next: function(){
+            step++;
+            if(step==1){
+             return {value:'Hello', done: false};
+            }else if(step == 2){
+                return {value:'world', done: false}
+            }
+            return {value:undefined, done:true}
+          }
+        }
+        return iterator;
+    }
+}
+
+for(let word of obj){
+    console.log(word);
+}
+//What we done right now Javascript does the same for string, array, map, set. That is how we use for of loop on them.
+
+//Generators
+//As we seen above creating our own iterables is verbose. Generator helps us in defining iterables in easy and simple way.
+//Generators are special functions which are used to simply creating iterables in javascript.
+
+function normalFunction(){ //Define normal functions
+    console.log('Hello');
+    console.log('World');
+}
+function* generatorFunctionDefination(){}//Defining generator function
+//As we can see normal function uses run to completion model. That means it begins from start and ends at last line.
+//If we want to exit from middle of execution we need to return from that line ot throw error.
+//But generator allows us to stop and continue execution form where it stopped or in other words it will pause the execution.
+//To achieve the behaviour we use yield keyword. Generators use this yield keyword and stops the execution.
+function* generatorFunction(){
+    yield 'Hello';
+    yield 'World';
+}
+
+const resultObject = generatorFunction();
+//The generator function returns a generator object which is nothing but an iterable
+for(let word of resultObject){
+    console.log(word);
+}
