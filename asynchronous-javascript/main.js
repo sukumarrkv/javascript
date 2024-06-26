@@ -36,4 +36,20 @@ setTimeout(greet1,3000,'John');//Here is John is a argument to greet1 function
 //Example of code is same as above. Use can pass greet function and it runs repeadeatly for set period of time.
 //As this runs at regular interval we can use clearInterval() to stop the function execution
 
+//Callbacks
+//In Javascript, functions are first class objects
+//Which means 1) Functions can be passed as an argument to a function
+//2)A function can also be returned as values from other functions
+function greet(name){
+    console.log(`Hello ${name}`)
+}
+
+function greetSukumar(greetfn){
+    const name = 'Sukumar';
+    greetfn(name);
+}
+greetSukumar(greet);
+//A function that is passed as an argument to another function is called a callback function
+//The function which accepts a function as an argument or returns a function is called an higher order function
+//In our example greet is an callback function and greetSukumar is an higher order function.
 
