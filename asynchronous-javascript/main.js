@@ -53,3 +53,65 @@ greetSukumar(greet);
 //The function which accepts a function as an argument or returns a function is called an higher order function
 //In our example greet is an callback function and greetSukumar is an higher order function.
 
+//Promise
+//Do watch video about dinner scenario tp understand promise in layman terms
+
+//Now we undersatnd What is Promise?
+//A promise is simply an object in javascript
+//A promise is always in one of the three states:
+//pending: which is intial state, which is neither fulfilled nor rejected
+//fullfilled: meaning that the operation completed successfully
+//rejected: meaning that the operation is failed
+
+//Now we undersatnd Why we need Promise?
+//Promises help us deal with Asynchronous code in a far more simpler way compared to callbacks
+//Callback hell can be avioded with Promises
+
+//How to work with Promises?
+//Lets go back to dinner scenario
+//Dinner scenario                |  Javascript
+//Your friend                    | Promise
+//Can get tacos/Cannot get tacos | Promise Value 
+//Can get tacos                  | Fullfill promise
+//Cannot get tacos               | Reject promise 
+//Setup Table                    | Success callback
+//Cook Pasta                     | Failure callback
+
+//How to create a Promise (Point 1)
+//How to fullfill or reject a Promise (Point 2, 3 and 4)
+//How to execute a callback function based on whetherthe promise is fullfilled or rejected (Point 5 and 6)
+
+//How to create a Promise
+const promise = new Promise();
+
+//How to fullfill or reject a Promise
+//Promise takes and function as argument and accepts two functions as argument, one if resolve function and other is reject function
+//
+// const resolvePromise = new Promise((resolve, reject) -> {
+//    //When resolve is called changes the status of promise from pending to fullfilled
+//    resolve();
+// })
+
+// const rejectPromise = new Promise((resolve, reject) -> {
+//     //When reject is called changes the status of promise from pending to rejected
+//     reject();
+//  })
+
+ //But both these functions are called after a async operation
+
+//  const asyncResolve = new Promise((resolve, reject)->{
+//     setTimeout(()->{
+//         //Food truck found
+//         //change the status from pending to fullfilled
+//         resolve();//This function is called after 5 seconds
+//     }, 5000)
+//  })
+
+//  const asyncReject = new Promise((resolve, reject)->{
+//     setTimeout(()->{
+//         //Food truck not found
+//         //change the status from pending to rejected
+//         reject();//This function is called after 5 seconds
+//     }, 5000)
+//  })
+
