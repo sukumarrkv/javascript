@@ -140,7 +140,7 @@ const rejectPromise = new Promise((resolve, reject) => {
 //promise.then(onfulfillment);
 //promise.catch(onRejection);
 
-//Our code works as expected but there is a room for inprovement.
+//Our code works as expected but there is a room for improvement.
 //What if we want to pass some data while the status of promise is changed.
 //To achieve this we use resolve and reject functions. This functions accept a parameter as argument which when passed
 //get automatically available in onFullfillment and onRjection function as shown below.
@@ -171,3 +171,58 @@ const onRejection1 = (error) => {
    console.log(error);
     console.log("Start cooking pasta");
 }
+//Watch video for part 2 of primises
+//On how promises solves the problem of callbackhell
+
+//Async Await
+//async/await keywords were intriduced in ES2017(ES8)
+//These keyword allow us to write completely synchronous looking code while performing asynchronous tasks behind the scenes.
+
+//async
+//The async keyword is used to declare async functions
+//Async functions are the functions that are instances of AsyncFunction constructor
+//Unlike normal functions, async functions always return a promise
+//Normal function
+function greet(){
+   return "Hello";
+}
+
+greet();
+//Output will be
+//"Hello"
+
+//async function
+async function asyncGreet(){
+    return "Hello";
+}
+asyncGreet();
+//Outout will be
+//Promise{<fulfilled>:"Hello"}
+
+//async function will automatically wrap the value in resolve function. So the above async function behind the scenes looks like below:
+async function asyncGreet1(){
+    return Promise.resolve("Hello");
+}
+//Now we can call then function to access the value - "Hello"
+asyncGreet().then((value)=>console.log(value));//output will be "Hello";
+
+//As you saw above when we use async keyword to a function it returns a promise, but it is more evident when we use async with await keyword
+
+//await
+//await keyword can be put infront of any async prmoise based function to pause your code until that promises settles and returns its result.
+//await keyword only works inside async functions,cannot use it in normal functions.
+
+async function awaitGreet(){
+    let promise = new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            resolve("Hello");
+        }, 1000);
+    });
+    let result = await promise;//Wait until promise resolves
+    console.log(result);
+}
+//As we used await the javascript pauses the execution for 1 second and prints result in console.
+//During this 1 second the greet function is paused for execution. We can do some other task meantime.
+
+//await helps in writing cleaner code and helps us with better exception handling
+//We can put await infornt of promise return values and use try catch for exception handling(See video) 
