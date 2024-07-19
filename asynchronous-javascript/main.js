@@ -54,16 +54,16 @@ greetSukumar(greet);
 //In our example greet is an callback function and greetSukumar is an higher order function.
 
 //Promise
-//Do watch video about dinner scenario tp understand promise in layman terms
+//Do watch video about dinner scenario to understand promise in layman terms
 
-//Now we undersatnd What is Promise?
+//Now we understand What is Promise?
 //A promise is simply an object in javascript
 //A promise is always in one of the three states:
 //pending: which is intial state, which is neither fulfilled nor rejected
 //fullfilled: meaning that the operation completed successfully
 //rejected: meaning that the operation is failed
 
-//Now we undersatnd Why we need Promise?
+//Now we understand Why we need Promise?
 //Promises help us deal with Asynchronous code in a far more simpler way compared to callbacks
 //Callback hell can be avioded with Promises
 
@@ -85,7 +85,7 @@ greetSukumar(greet);
 //const promise = new Promise();
 
 //How to fullfill or reject a Promise
-//Promise takes and function as argument and accepts two functions as argument, one if resolve function and other is reject function
+//Promise takes and function as argument and accepts two functions as argument, one is resolve function and other is reject function
 //
 const resolvePromise = new Promise((resolve, reject) => {
    //When resolve is called changes the status of promise from pending to fullfilled

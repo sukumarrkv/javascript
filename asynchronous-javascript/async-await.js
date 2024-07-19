@@ -97,11 +97,28 @@ function greet(){
 
  //Parallel
  function parallelStart(){
-    return Promise.all([
-        (async ()=>console.log(await greetHello())),
-        (async ()=>console.log(await greetWorld()))
+    Promise.all([
+        (async ()=>console.log(await greetHello()))(), //Logs after 2 seconds
+        (async ()=>console.log(await greetWorld()))(), //Logs after 1 second
     ]);
  }
-parallelStart().then((values) => {
-    console.log(values);
-});
+parallelStart();
+
+//If above code confuses i have wriiten below code to simplyfy
+async function functionHello(){
+    const result = await greetHello();
+    console.log(result);
+}
+
+async function functionWorld(){
+    const result = await greetWorld();
+    console.log(result);
+}
+
+function parallel(){
+    Promise.all([
+        (async ()=>await functionHello())(),
+        (async ()=> await functionWorld())(),
+    ])
+}
+parallel();
