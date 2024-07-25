@@ -49,8 +49,8 @@ console.log(person.firstName);
 const oddNumbers = [1,3,5,7,9];
 console.log(oddNumbers[0]);
 
-//***Javascript is dynamically types language
-//Which means you don;t have declara datatype while declaring a variable, they are converted automatically as neede during execution
+//***Javascript is dynamically typed language
+//Which means you don't have declare datatype while declaring a variable, they are converted automatically as needed during execution
 let a =10;
 a='abc';
 a=true;
@@ -81,7 +81,7 @@ console.log('4'-'3');//1
 console.log('a'-'b')//NaN
 console.log(5-null);//5
 console.log(5-undefined)//NaN - undefined with any operator is NaN
-//Explicit conversion - we maust manually do
+//Explicit conversion - we must manually do
 //For this we use predefined methods
 console.log(Number('5'));//Converting string to number
 console.log(parseInt('4'));
@@ -120,22 +120,19 @@ for(const arr of array){
 function greet(){
     console.log("Good morning");
 }
-
 greet();
 
 function greet(username){
     console.log('Good morning '+ username);
 }
-
 greet('ABC');
 
 function sumTwo(a,b){
     return a+b;
 }
-
 console.log(sumTwo(5,5));
-//Arrow functions
 
+//Arrow functions
 const addNumbers = (a,b)=>{
     return a+b;
 } // const addNumbers = (a,b)=>a+b;
