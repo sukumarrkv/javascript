@@ -147,3 +147,38 @@ Superhero.prototype=Object.create(NewPerson.prototype);
 const superHero = new Superhero('Super', 'Man');
 Superhero.prototype.construtor = Superhero; //This line will make sure that super hero object is created using Superhero and not NewPerson(As JS thinks)
 console.log(superHero.getFullName());
+
+//Iterables and Iteraters (for of loop)
+//Now we will create our own iterable
+const obj = {
+    [Symbol.iterator]: function(){
+        let step=0;
+        const iterator = {
+            next: function(){
+            step++;
+            if(step==1){
+                return {value:'Hello', done: false}
+            }else if(step==2){
+                return {value:'World', done: false}
+            }
+            return {vaule:undefined,done:true}
+        }
+    }
+        return iterator;
+    }
+}
+
+for(let word of obj){
+    console.log(word);
+}
+
+//Generators:
+function* generatorFunction(){
+    yield 'Hello';
+    yield 'World';
+}
+
+const generatorObject = generatorFunction();
+for(let word of generatorObject){
+    console.log(word);
+}
