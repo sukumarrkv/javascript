@@ -52,6 +52,12 @@ greetSukumar(greet);
 //A function that is passed as an argument to another function is called a callback function
 //The function which accepts a function as an argument or returns a function is called an higher order function
 //In our example greet is an callback function and greetSukumar is an higher order function.
+//Above example is for synchronous callbacks
+
+//Asynchronuous callbacks
+//These are used to pause the execution for certain period of time eg:cb passed setTimeout(line 6), eventlistener, data fetching.
+//document.getElementById("").addEventListener("click", callback);
+//$.get("url", callback)
 
 //Promise
 //Do watch video about dinner scenario to understand promise in layman terms
