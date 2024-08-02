@@ -53,3 +53,32 @@ rejectPromise.catch((error)=>{
     console.log(error);
     console.log('Start preparing pasta');
 })
+//We can have promise.then(onFullfillment, onRejection);
+//We can chain promises like promise.then().then().then()..etc this will solve the callback hell problem
+//Some important statis methods of Promise are .all(), allSettled(), race().
+
+//Async await
+//We can still improve writing promises, we can write synchronous looking code while performing asynchronous tasks behind the scenes.
+
+//Async fuctions are the functions that always return promise.
+async function asyncGreet(){
+    return "Hello"; //Output will be Promise{'Hello'}
+}
+console.log(asyncGreet());
+
+//await
+//We can add this infront of promise based function to pause the code until that promise settles and returns a result.
+//It only works inside async functions
+
+async function awaitGreet(){
+    let promise = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve('Hello')
+        },1000)
+    });
+
+    const result = await promise;
+    console.log(result);
+}
+
+awaitGreet();
