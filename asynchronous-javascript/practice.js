@@ -82,3 +82,8 @@ async function awaitGreet(){
 }
 
 awaitGreet();
+
+//EventLoop
+//The promise will always set the result to the promise value's object when it is done executing.
+//Later it will be pushed into the microtask queue.
+//Javascript gives more priority to microtask queue than callback queue hence the function present in microtask queue will be pushed into callstack first.
