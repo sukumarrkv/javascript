@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Objects</title>
+  </head>
+  <body>
+    <script>
+      /*
+      const product = {
+        name: 'Socks',
+        price: 1200
+      };
+      console.log(product);
+      console.log(product.name);
+      console.log(product.price);
+
+      product.name='Cotton Socks';
+      console.log(product.name);
+
+      product.newProperty = true;
+      console.log(product);
+
+      delete product.newProperty;
+      console.log(product);
+
+      console.log(typeof product);
+      */
+
+      const product2 ={
+        name:'Shirts',
+        'total-count': 10,
+        rating: {
+          points: 4.5,
+          count: 87
+        },
+
+        fun: function function1(){
+          console.log('Function inside an object');
+        }
+      };
+
+      console.log(product2);
+      console.log(product2.name);
+      console.log(product2['name']);
+      console.log(product2['total-count']);
+      //We should use above notation when we can't access properties using for notation.
+      //For eg in above case we have - inbetween hence if we use product2.total-count javascript will throw an error.
+      //It thinks - is negative sign and do calculation
+
+      console.log(product2.rating.count);
+      product2.fun();
+
+      //Built-in objects in Javascript:
+      //console, Math - we already used these;
+
+      //Other important bulit in Objects are
+      //JSON
+      //localStorage
+
+      //JSON is used to convert an object into JSON and viceversa
+
+      console.log(JSON.stringify(product2));
+
+      const jsonString = JSON.stringify(product2);
+
+      console.log(JSON.parse(jsonString));
+
+
+    </script>
+  </body>
+</html>
