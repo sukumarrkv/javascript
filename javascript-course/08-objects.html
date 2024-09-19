@@ -65,7 +65,34 @@
 
       console.log(JSON.parse(jsonString));
 
+      //Auto-boxing
+      //Javascript wraps the string values into a special object, this is called auto boxing, hence we get below methods
+      console.log('hello'.length);
+      console.log('hello'.toUpperCase());
 
+      //Objects are References (Just like how objects behave in Java)
+      const object1 ={
+        message: 'hello'
+      };
+      //Object1 doesn't contain message:'hello' in memory it caontains the memory location where message: 'hello' is stored.
+
+      const object2 = object1;
+      //Now the object2 also points to same reference as object1, hence below will result true.
+
+      console.log(object1===object2); 
+
+      //Even though we defined object1 as cont we can change the values of properties
+      object1.message = 'Good Job';
+      console.log(object1);
+      console.log(object2); //This proves both object1 and object2 point to same reference.
+
+      //But of we define object3 same as object1 and try to compare we get false
+      const object3 = {
+        message:'Good Job'
+      };
+
+      console.log(object1===object3); //We are comapring the references here and not values
+      //If you want to compare the values inside we need to compare using properties
     </script>
   </body>
 </html>
