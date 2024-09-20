@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+  <body>
+    <button>Button</button>
+    <script>
+      //DOM combines JS and HTML together
+      //document is just and javascript object like any other objects which gives property and methods to combine JS and HTML together.
+      //This will get the body HTML element and change the content inside the body HTML element.
+      document.body.innerHTML = 'Hello'; //body is an object inside document object
+      document.title = 'New title';
+      //To confirm document is just and object we can typeof and check
+      console.log(typeof document);
+      console.log(typeof document.body);
+      console.log(typeof document.title);
+    </script>
+  </body>
+</html>
