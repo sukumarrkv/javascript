@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Projects</title>
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button onclick="doSubsribe();" 
+     class="js-subscribe-button">Subscribe</button>
+
+     <p>Amazon Shipping Caculator</p>
+     <p>Orders under $40 = +$10 shipping.</p>
+     <p>Orders over $40 = FREE shipping.</p>
+     <input class="js-order-value" placeholder="Cost of order"
+            onkeydown="handleKeyDown(event);">
+            <!-- Every event listener will provide event object from which we can get more info about event-->
+     <button onclick="calculateTotal();">Calculate</button>
+     <p class="js-display-total-cost"></p>
+
+    <script>
+      function doSubsribe(){
+        const subscribeButtonElement = 
+        document.querySelector('.js-subscribe-button');
+
+        //Sometime we might have spaces around Subscribe in button. So if we use innerHTML and compare with 'Subscibe'
+        //the if condition will fail so do avoid we must use innerText instead of innerHTML
+        if(subscribeButtonElement.innerText === 'Subscribe'){
+          subscribeButtonElement.innerHTML = 'Subscribed';
+        } else {
+          subscribeButtonElement.innerHTML = 'Subscribe';
+        }
+      }
+
+      function calculateTotal(){
+        const orderInputElement = document.querySelector('.js-order-value');
+        let orderValue = Number(orderInputElement.value);
+        //We will get string from above .value method to convert we use Number() function given by javascript;
+
+        if(orderValue < 40){
+          orderValue = orderValue + 10;
+          //If we don't have Number function above we get 3010 if orderValue is 30. This is called Type coersion.
+        }
+
+        document.querySelector('.js-display-total-cost').innerHTML = `$${orderValue}`;
+      }
+
+      function handleKeyDown(event){
+        console.log(event.key);
+        if(event.key === 'Enter'){
+          calculateTotal();
+        }
+      }
+    </script>
+  </body>
+</html>

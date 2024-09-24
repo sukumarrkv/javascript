@@ -5,16 +5,43 @@
   </head>
   <body>
     <button>Button</button>
+    <button class="js-button">Second button</button>
+    <!-- we start class name with js to indicate this element is used in javascript -->
     <script>
+      /*
       //DOM combines JS and HTML together
       //document is just and javascript object like any other objects which gives property and methods to combine JS and HTML together.
       //This will get the body HTML element and change the content inside the body HTML element.
-      document.body.innerHTML = 'Hello'; //body is an object inside document object
-      document.title = 'New title';
+      //document.body.innerHTML = 'Hello'; //body is an object inside document object
+      //document.title = 'New title';
       //To confirm document is just and object we can typeof and check
       console.log(typeof document);
       console.log(typeof document.body);
       console.log(typeof document.title);
+
+      //To get the title of the page
+      console.log(document.title);
+      document.title='Changed';
+
+      //document.body gets the entire body HTML element
+      console.log(document.body);
+      //dosument.body.innerHTML will get what is inside the body HTML element
+      console.log(document.body.innerHTML);
+      //We can replace what is inside uaing same innerHTML
+      document.body.innerHTML='Hello';
+      document.body.innerHTML='<button>Changed</button>';
+      */
+
+     //method is a function saved inside an object
+     //document.querySelector(): let us get any element from the page and put it insdie the javascript
+     console.log(document.querySelector('button'));
+     document.querySelector('button').innerHTML='Changed';
+     //Above gets the first button
+     //Now if you want get the second button, we should use class attribute
+     //We can also assign them to local variables
+     const secondButtonElement = document.querySelector('.js-button');
+     //We should end the variable name with Element/Elem to indicate we are getting HTML element as result.
+     console.log(secondButtonElement);
     </script>
   </body>
 </html>
