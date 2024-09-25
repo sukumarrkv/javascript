@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Projects</title>
+    <style>
+      body {
+        font-family: Arial;
+      }
+
+      .subscribe-button {
+        background-color: black;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 20px;
+        font-weight: bold;
+        margin-bottom: 33px;
+        cursor: pointer;
+      }
+
+      .is-subscribed {
+        background-color: rgb(240, 240, 240);
+        color: black;
+      }
+
+      .cost-input {
+        font-size: 15px;
+        padding: 10px;
+      }
+
+      .calculate-button {
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 12px 15px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button onclick="doSubsribe();" 
+     class="js-subscribe-button subscribe-button">Subscribe</button>
+     <!-- we Should have different class for css and js -->
+     <p>Amazon Shipping Caculator</p>
+     <p>Orders under $40 = +$10 shipping.</p>
+     <p>Orders over $40 = FREE shipping.</p>
+     <input class="js-order-value cost-input" placeholder="Cost of order"
+            onkeydown="handleKeyDown(event);">
+     <button onclick="calculateTotal();" class="calculate-button">Calculate</button>
+     <p class="js-display-total-cost"></p>
+
+    <script>
+      function doSubsribe(){
+        const subscribeButtonElement = 
+        document.querySelector('.js-subscribe-button');
+
+        if(subscribeButtonElement.innerText === 'Subscribe'){
+          subscribeButtonElement.innerHTML = 'Subscribed';
+          //When we click subscribe button we should style the button differently
+          //Hence we will add a new class to element and style that element using this class.
+          subscribeButtonElement.classList.add('is-subscribed');
+        } else {
+          subscribeButtonElement.innerHTML = 'Subscribe';
+          //We will click again after clicking the button we should remove th style 
+          //we added so that previous style will apply
+          subscribeButtonElement.classList.remove('is-subscribed');
+        }
+      }
+
+      function calculateTotal(){
+        const orderInputElement = document.querySelector('.js-order-value');
+        let orderValue = Number(orderInputElement.value);
+        
+        if(orderValue < 40){
+          orderValue = orderValue + 10;
+        }
+
+        document.querySelector('.js-display-total-cost').innerHTML = `$${orderValue}`;
+      }
+
+      function handleKeyDown(event){
+        console.log(event.key);
+        if(event.key === 'Enter'){
+          calculateTotal();
+        }
+      }
+    </script>
+  </body>
+</html>
