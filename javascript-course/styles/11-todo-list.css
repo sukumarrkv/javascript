@@ -1,3 +1,40 @@
+body {
+  font-family: Arial;
+}
+
 .todo-input {
   font-size: 15px;
+  padding: 5px;
+}
+
+.duedate-input  {
+  font-size: 14px;
+  padding: 5px;
+}
+
+.todo-objects,
+.todo-list-inputs {
+  display: grid;
+  grid-template-columns: 200px 150px 100px;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.todo-objects{
+  height: 20px;
+}
+.todo-list-inputs {
+  margin-bottom: 10px;
+}
+
+.todo-add-button {
+  background-color: green;
+  color: white;
+  border: none;
+}
+
+.todo-delete-button {
+  background-color: rgb(114, 0, 0);
+  color: white;
+  border: none;
 }

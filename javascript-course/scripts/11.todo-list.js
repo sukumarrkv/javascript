@@ -49,14 +49,18 @@ function renderTodos(){
   let finalTodoHTML='';
   for(let i=0;i<todoObjectList.length;i++){
     const todoObjectHTML = `
-    <p>
+    <div>
       ${todoObjectList[i].name}
+    </div>
+    <div>
       ${todoObjectList[i].dueDate}
-      <button onclick="
+    </div>
+    <button onclick="
       todoObjectList.splice(${i},1);
-      renderTodos();
-      ">Delete</button>
-    </p>`;
+      renderTodos();"
+      class="todo-delete-button">Delete
+    </button>
+    `;
 
     finalTodoHTML = finalTodoHTML + todoObjectHTML;
   }
