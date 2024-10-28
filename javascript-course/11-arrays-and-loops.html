@@ -54,6 +54,51 @@
         numsDoubled.push(nums[i]*2);
       }
       console.log(numsDoubled);
+
+      //Arrays are references (just like objects)
+      const array1 = [1,2,3];
+      const array2 = array1;
+      array1.push(4);
+      console.log(array1);
+      console.log(array2);
+
+      //To avoid the adding 4 to array2 even though we pushed in just array1
+      //Follow below steps
+      const array3 = array1.slice(); //this creates copy of array1 in array3
+      array1.push(5);
+      console.log(array1);
+      console.log(array2);
+      console.log(array3);
+
+      //Destructing
+      const [firstValue, secondvalue] = [1,2];
+      console.log(firstValue);
+      console.log(secondvalue);
+
+      //break and continue
+      for(let i=0; i<=10; i++){
+        if(i%3===0){
+          continue;
+        }
+
+        //console.log(i);
+
+        if(i===8){
+          break;
+        }
+      }
+
+      //In while loop we need to handle increment operator manually while using continue
+
+      let index1=0;
+      while(index1<=10){
+        if(index1%3===0){
+          index1++;
+          continue;
+        }
+        console.log(index1);
+        index1++;
+      }
     </script>
   </body>
 </html>
