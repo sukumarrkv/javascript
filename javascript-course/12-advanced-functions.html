@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced Functions</title>
+  </head>
+  <body>
+    <script>
+
+      greeting();
+      //One way of writing function
+      function greeting() {
+        console.log('Hello');
+      }
+
+      greeting();
+
+      //Another way of writing functions
+      //Functions are values, just like other types we can assign functions to a variable
+      const function1 = function greeting(){
+        console.log("World");
+      }; //Since we are assigning a function to varible we need to add semicolon at the end
+
+      console.log(function1);
+      console.log(typeof function1);
+
+      function1();
+
+      //As we can see we write two functions in two ways
+      //The advantage of writing function shown in first is 
+      //1) Easier to read
+      //2) Hoisting - we can call the function in above lines (See greeting function defined above in line 9)
+
+      //We can still improve second way of writing function by removing greeting
+      //This is called anonymous function
+    </script>
+  </body>
+</html>
