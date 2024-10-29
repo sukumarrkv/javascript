@@ -32,6 +32,36 @@
 
       //We can still improve second way of writing function by removing greeting
       //This is called anonymous function
+
+      //As we seen above function is a value, we can save a function in an object
+      const object1 = {
+        num:2,
+        fun: function(){
+          console.log('Hello from method');
+        }
+      };
+
+      object1.fun();
+
+      //As functions are just values, we can pass as a value to a function
+      function run(fun){
+        fun();
+      }
+
+      run(function(){
+        console.log('Hello from callback');
+      });
+
+      //The function passed as an argument to another function is called a callback function.
+      setTimeout(function(){
+        console.log('TImeout');
+      }, 2000);
+
+      /*
+      setInterval(() => {
+        console.log('Interval')
+      }, 2000);
+      */
     </script>
   </body>
 </html>
