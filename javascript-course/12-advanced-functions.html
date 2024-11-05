@@ -62,6 +62,22 @@
         console.log('Interval')
       }, 2000);
       */
+
+      //More notes on functions as values
+
+      //forEach will loop through an array and pass each value into the function.
+      //We are passing a function as a parameter to forEach function
+      ['make dinner', 'wash dishes', 'watch youtube'].forEach(function(value){
+        console.log(value);
+      });
+
+      //forEach can have one more argument called index
+      ['make dinner', 'wash dishes', 'watch youtube'].forEach(function(value, index){
+        console.log(index + ":" + value);
+      });
+
+      //inorder to skip  a iteration using forEach we must use return instead of continue.
+      //Unfortunately writing break is difficult in forEach so incase your code needs to break use regualr for loop
     </script>
   </body>
 </html>
