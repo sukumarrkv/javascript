@@ -12,6 +12,23 @@ if(score === null){
 
 updateScore();
 
+document.querySelector('.js-rock-button').addEventListener('click', () => {
+  playGame('Rock');
+});
+
+//Common mistake is to pass playGame('rock) as function to event listener as sown below
+ //document.querySelector('.js-rock-button').addEventListener('click', playGame('rock'));
+ //This is incorrect because it just runs that function and returns as we don't have any returns it returns undefined.
+ //Hence we need to create a function and pass our function inside that function body
+
+ document.querySelector('.js-paper-button').addEventListener('click', () => {
+  playGame('Paper');
+ });
+
+ document.querySelector('.js-scissors-button').addEventListener('click', () => {
+  playGame('Scissors');
+ });
+ 
 function playGame(playerChoice){
   const computerChoice = pickComputerChoice();
 

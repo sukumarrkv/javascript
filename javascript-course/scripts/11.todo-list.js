@@ -65,6 +65,25 @@ function renderTodos(){
     finalTodoHTML = finalTodoHTML + todoObjectHTML;
   }
 
+  //We can convert above for to forEach
+  // todoObjectList.forEach(function(todoObject, index){
+  //   const todoObjectHTML = `
+  //   <div>
+  //     ${todoObject.name}
+  //   </div>
+  //   <div>
+  //     ${todoObject.dueDate}
+  //   </div>
+  //   <button onclick="
+  //     todoObjectList.splice(${index},1);
+  //     renderTodos();"
+  //     class="todo-delete-button">Delete
+  //   </button>
+  //   `;
+
+  //   finalTodoHTML = finalTodoHTML + todoObjectHTML;
+  // });
+
   console.log(finalTodoHTML);
   
   document.querySelector('.display-todo-object').innerHTML = finalTodoHTML;

@@ -4,6 +4,7 @@
     <title>Advanced Functions</title>
   </head>
   <body>
+    <button onclick="" class="js-button">Click</button>
     <script>
 
       greeting();
@@ -78,6 +79,52 @@
 
       //inorder to skip  a iteration using forEach we must use return instead of continue.
       //Unfortunately writing break is difficult in forEach so incase your code needs to break use regualr for loop
+
+      //Arrow Functions
+
+      const arrowFunction = () => {
+        console.log('Hello from arrowFunction');
+      };
+
+      arrowFunction();
+
+      const arrowFunction1 = (param1, param2) => {
+        console.log('Hello with param');
+      };
+      arrowFunction1();
+
+      const oneParam = param =>{
+        console.log(param+1);
+      }
+      oneParam(2);
+
+      const result = () => 2+3;
+      console.log(result());
+
+      //EventListeners
+
+      const buttonElement = document.querySelector('.js-button');
+
+      const eventListener = () => {
+        console.log('Click');
+      };
+      buttonElement.addEventListener('click', eventListener);
+
+      //We can remove event listeners
+      //Lets say we want not to run above passed fucntion when we click
+      //and instead run below function we can use removeeventlistener
+
+      buttonElement.removeEventListener('click', eventListener);
+
+      buttonElement.addEventListener('click', () => {
+        console.log('Click2');
+      });
+
+      //Advantages of using addeventlisteners over onclick
+      //we can add multiple eventlisteners for one event
+      //we can remove event listeners
+
+      //Now convert 12-rock-paper-scissors to use event listeners
     </script>
   </body>
 </html>
