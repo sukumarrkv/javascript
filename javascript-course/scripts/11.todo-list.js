@@ -84,7 +84,24 @@ function renderTodos(){
   //   finalTodoHTML = finalTodoHTML + todoObjectHTML;
   // });
 
-  console.log(finalTodoHTML);
+  //console.log(finalTodoHTML);
+
+  //Below code we can replace onclick with event listeners
+  document.querySelector('.js-add-todo-button')
+           .addEventListener('click', () => {
+            addTodo();
+           });
+  
+  //We should add below code after we display html (which contains delete button html code) on page
+  //We can use querySelector method because we have more than one button with same class name
+  //Inorder to select all button with same class name we should use querySelectorAll method
+  document.querySelectorAll('.js-delete-todo-button')
+          .forEach((eachDeleteButton, index) => {
+            eachDeleteButton.addEventListener('click', () => {
+              todoObjectList.splice(index,1);
+              renderTodos();
+            });
+          });
   
   document.querySelector('.display-todo-object').innerHTML = finalTodoHTML;
 }

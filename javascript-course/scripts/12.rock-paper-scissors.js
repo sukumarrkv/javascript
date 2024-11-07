@@ -29,6 +29,19 @@ document.querySelector('.js-rock-button').addEventListener('click', () => {
   playGame('Scissors');
  });
  
+//We need a functionality if we press r we should play rock, p paper and s scissors,
+//To achieve this we will use keydown event which gives information about the key pressed by passing an event object as a parameter to the callback function
+//We are using .body because if use clicks on anywhere on page and hits r/p/s we should do as mentioned above
+document.body.addEventListener('keydown', (event) => {
+  if(event.key === 'r'){
+    playGame('Rock');
+  } else if(event.key === 'p'){
+    playGame('Paper');
+  } else if(event.key === 's'){
+    playGame('Scissors');
+  }
+})
+
 function playGame(playerChoice){
   const computerChoice = pickComputerChoice();
 
