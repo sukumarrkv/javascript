@@ -96,6 +96,7 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
   buttonElement.addEventListener('click', () =>  {
     // console.log("Added to cart");
     // console.log(buttonElement.dataset.productName);
+    //data-attribute defined in kebab-case (data-product-id) will be converted into camel case (productId)
     const productId = buttonElement.dataset.productId;
     let matchedItem;
 
@@ -114,6 +115,17 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
         quantity: 1
       }); 
     }
-    console.log(cart);
+    //console.log(cart);
+
+    let cartQuantity = 0;
+
+    cart.forEach((item) => {
+      cartQuantity += item.quantity;
+    });
+
+    //console.log(cartQuantity);
+
+    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+
   });
 });
