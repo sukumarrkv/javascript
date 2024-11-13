@@ -1,4 +1,5 @@
 import {cart} from '../data/cart.js';
+import { products} from '../data/products.js';
 
 //We need liver server inorder for modules to work
 //One more way of importing
