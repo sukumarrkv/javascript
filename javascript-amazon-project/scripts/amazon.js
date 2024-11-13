@@ -1,3 +1,14 @@
+import {cart} from '../data/cart.js';
+
+//We need liver server inorder for modules to work
+//One more way of importing
+//import {cart as myCart} from '../data/cart.js';
+//by doing this we can use cart varibale again in the below code with out any errors
+
+//Benefits of modules:
+//We don't get naming conflicts
+//We don't need to follow order of files in the html
+
 //console.log('Hello');
 //Main Idea of Javascript:
 //1) Save the data
