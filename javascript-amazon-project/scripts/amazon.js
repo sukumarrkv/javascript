@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import { products} from '../data/products.js';
 
 //We need liver server inorder for modules to work
@@ -99,6 +99,20 @@ products.forEach((product) => {
 
 document.querySelector('.js-products-grid').innerHTML = productsHtml;
 
+//We might think moving this function into cart.js but that is wrong because we are using this function to update
+//we page.So it must be inside this js file only
+function updateCartQuantity(){
+  let cartQuantity = 0;
+
+    cart.forEach((cartItem) => {
+      cartQuantity += cartItem.quantity;
+    });
+
+    //console.log(cartQuantity);
+
+    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+}
+
 //Now to find which product user has added to cart we will use data-attribute from HTML
 //which uniquely identifies the each product
 //Syntax rule for adding data-attribute in hmtl
@@ -110,34 +124,7 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
     // console.log(buttonElement.dataset.productName);
     //data-attribute defined in kebab-case (data-product-id) will be converted into camel case (productId)
     const productId = buttonElement.dataset.productId;
-    let matchedItem;
-
-    cart.forEach((item) => {
-      if(productId === item.productId){
-        matchedItem = item;
-      }
-    });
-
-    //Truty value if we have some object in matchedItem
-    if(matchedItem){
-      matchedItem.quantity += 1;
-    } else {
-      cart.push({
-        productId: productId,
-        quantity: 1
-      }); 
-    }
-    //console.log(cart);
-
-    let cartQuantity = 0;
-
-    cart.forEach((item) => {
-      cartQuantity += item.quantity;
-    });
-
-    //console.log(cartQuantity);
-
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-
+    addToCart(productId);
+    updateCartQuantity();
   });
 });
