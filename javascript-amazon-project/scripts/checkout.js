@@ -1,13 +1,15 @@
-import { cart } from "../data/cart.js";
+import { cart, removeFromCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
-let orderSummaryHTML;
+let orderSummaryHTML = '';
+
+function orderSummary() {
+
+}
 
 cart.forEach((cartItem) => {
   const productId = cartItem.productId;
-
-  console.log(productId);
 
   let matchedProduct;
 
@@ -17,10 +19,7 @@ cart.forEach((cartItem) => {
     }
   });
 
-  console.log(matchedProduct);
-
-  orderSummaryHTML += `
-    <div class="cart-item-container">
+  orderSummaryHTML += `<div class="cart-item-container js-cart-item-container-${matchedProduct.id}">
       <div class="delivery-date">
         Delivery date: Tuesday, June 21
       </div>
@@ -43,7 +42,7 @@ cart.forEach((cartItem) => {
             <span class="update-quantity-link link-primary">
               Update
             </span>
-            <span class="delete-quantity-link link-primary">
+            <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchedProduct.id}">
               Delete
             </span>
           </div>
@@ -99,4 +98,15 @@ cart.forEach((cartItem) => {
 });
 
 document.querySelector('.js-order-summary').innerHTML = orderSummaryHTML;
-//console.log(orderSummaryHTML);
+
+//Two steps involved in deleting an item
+//1) Remove the item from cart
+//2) Update the DOM - this can be done by removing that particular order summary box from DOM
+//To do this we will add a special class with name involving productId which will help in identifying which item to remove from DOM
+document.querySelectorAll('.js-delete-link').forEach((deleteLink) => {
+  deleteLink.addEventListener('click', () => {
+    const productIdToBeDeleted = deleteLink.dataset.productId;
+    removeFromCart(productIdToBeDeleted);
+    document.querySelector(`.js-cart-item-container-${productIdToBeDeleted}`).remove();
+  });
+});
