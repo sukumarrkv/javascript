@@ -1,12 +1,22 @@
 import { cart, removeFromCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
+import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
+//The above type of importing without curly braces is called default importing.
+//More info can be found in money.js
 
 let orderSummaryHTML = '';
 
-function orderSummary() {
-
-}
+//Testing dayjs features
+//More info on how to use dayjs can be found in official days documentation
+//console.log(dayjs());
+const today = dayjs();
+console.log(today);
+const addSevenDays = today.add(7,'days');
+console.log(addSevenDays);
+//Formatting date
+const formatDate =today.format('YYYY, MMMM, D');
+console.log(formatDate);
 
 cart.forEach((cartItem) => {
   const productId = cartItem.productId;
