@@ -101,7 +101,7 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid').innerHTML = productsHtml;
 
 //We might think moving this function into cart.js but that is wrong because we are using this function to update
-//we page.So it must be inside this js file only
+//the page.So it must be inside this js file only
 function updateCartQuantity(){
   let cartQuantity = 0;
 

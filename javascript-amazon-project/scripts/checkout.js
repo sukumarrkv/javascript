@@ -4,19 +4,20 @@ import { formatCurrency } from "./utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 //The above type of importing without curly braces is called default importing.
 //More info can be found in money.js
+import {deliveryOptions} from '../data/deliveryOptions.js';
 
 let orderSummaryHTML = '';
 
 //Testing dayjs features
 //More info on how to use dayjs can be found in official days documentation
 //console.log(dayjs());
-const today = dayjs();
-console.log(today);
-const addSevenDays = today.add(7,'days');
-console.log(addSevenDays);
-//Formatting date
-const formatDate =today.format('YYYY, MMMM, D');
-console.log(formatDate);
+// const today = dayjs();
+// console.log(today);
+// const addSevenDays = today.add(7,'days');
+// console.log(addSevenDays);
+// //Formatting date
+// const formatDate =today.format('YYYY, MMMM, D');
+// console.log(formatDate);
 
 cart.forEach((cartItem) => {
   const productId = cartItem.productId;
@@ -62,50 +63,50 @@ cart.forEach((cartItem) => {
           <div class="delivery-options-title">
             Choose a delivery option:
           </div>
-          <div class="delivery-option">
-            <input type="radio" checked
-              class="delivery-option-input"
-              name="delivery-option-${matchedProduct.id}">
-            <div>
-              <div class="delivery-option-date">
-                Tuesday, June 21
-              </div>
-              <div class="delivery-option-price">
-                FREE Shipping
-              </div>
-            </div>
+          ${generateDeliveryHTML(matchedProduct, cartItem)}
           </div>
-          <div class="delivery-option">
-            <input type="radio"
-              class="delivery-option-input"
-              name="delivery-option-${matchedProduct.id}">
-            <div>
-              <div class="delivery-option-date">
-                Wednesday, June 15
-              </div>
-              <div class="delivery-option-price">
-                $4.99 - Shipping
-              </div>
-            </div>
-          </div>
-          <div class="delivery-option">
-            <input type="radio"
-              class="delivery-option-input"
-              name="delivery-option-${matchedProduct.id}">
-            <div>
-              <div class="delivery-option-date">
-                Monday, June 13
-              </div>
-              <div class="delivery-option-price">
-                $9.99 - Shipping
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
   `;
 });
+
+function generateDeliveryHTML(matchedProduct, cartItem){
+
+  let html = '';
+  const today = dayjs();
+
+  deliveryOptions.forEach((deliveryOption) => {
+    console.log(deliveryOption);
+  const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
+  console.log(deliveryDate);
+  const formattedDate = deliveryDate.format('dddd, MMMM D');
+
+  const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
+
+  const deliveryCharge = deliveryOption.priceCents === 0 ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} - `
+    
+    html +=`
+    <div class="delivery-option">
+      <input type="radio" 
+      ${isChecked ? 'checked' : ''}
+      class="delivery-option-input"
+        name="delivery-option-${matchedProduct.id}">
+      <div>
+        <div class="delivery-option-date">
+          ${formattedDate}
+      </div>
+        <div class="delivery-option-price">
+          ${deliveryCharge} Shipping
+        </div>
+      </div>
+    </div>
+  `
+  });
+
+  return html;
+}
 
 document.querySelector('.js-order-summary').innerHTML = orderSummaryHTML;
 
