@@ -8,7 +8,7 @@ if(!cart){
 }, {
   productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
   quantity:1,
-  deliveryOptionId: 2
+  deliveryOptionId: 1
 }];
 }
 
@@ -27,7 +27,7 @@ export function addToCart(productId){
       }
     });
 
-    //Truty value if we have some object in matchedItem
+    //Truthy value if we have some object in matchedItem
     if(matchedItem){
       matchedItem.quantity += 1;
     } else {
@@ -49,4 +49,18 @@ export function removeFromCart(productIdToBeDeleted){
   });
 
   saveToLocalStorage();
+}
+
+export function updateDeliveryOption(productId, deliveryOptionId){
+  let matchedItem;
+
+    cart.forEach((cartItem) => {
+      if(productId === cartItem.productId){
+        matchedItem = cartItem;
+      }
+    });
+
+    matchedItem.deliveryOptionId = deliveryOptionId;
+
+   saveToLocalStorage();
 }
