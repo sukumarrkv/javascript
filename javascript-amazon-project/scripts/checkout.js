@@ -20,7 +20,10 @@ let orderSummaryHTML = '';
 // console.log(formatDate);
 
 cart.forEach((cartItem) => {
+  console.log("cartItem: "+cartItem);
   const productId = cartItem.productId;
+  console.log("productId: "+productId);
+  console.log("cartItem.deliveryOptionId: "+cartItem.deliveryOptionId);
 
   let matchedProduct;
 
@@ -31,7 +34,7 @@ cart.forEach((cartItem) => {
   });
 
   const deliveryOptionId = cartItem.deliveryOptionId;
-  console.log(deliveryOptionId);
+  console.log("deliveryOptionId: "+deliveryOptionId);
 
   let matchingDeliveryOption;
 
@@ -143,8 +146,9 @@ document.querySelectorAll('.js-delete-link').forEach((deleteLink) => {
 
 // document.querySelectorAll('.js-delivery-option').forEach((element) => {
 //   element.addEventListener('click', () => {
-//     const productId = element.dataset.productId;
-//     const deliveryOptionId = element.dataset.deliveryOptionId;
+//     //const productId = element.dataset.productId;
+//     //const deliveryOptionId = element.dataset.deliveryOprionId;
+//     const {productId, deliveryOptionId} = element.dataset;
 //     updateDeliveryOption(productId, deliveryOptionId);
 //   });
 // });
