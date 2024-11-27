@@ -63,12 +63,7 @@ export function updateDeliveryOption(productId, deliveryOptionId){
         matchedItem = cartItem;
       }
     });
-
-    console.log("matchedItem"+ matchedItem.deliveryOptionId);
     matchedItem.deliveryOptionId = deliveryOptionId;
-    console.log("matchedItem after"+ matchedItem.deliveryOptionId);
 
-   console.log(JSON.parse(localStorage.getItem('cart')));
    saveToLocalStorage();
-   console.log(JSON.parse(localStorage.getItem('cart')));
 }
