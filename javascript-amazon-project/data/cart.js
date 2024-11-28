@@ -55,11 +55,8 @@ export function removeFromCart(productIdToBeDeleted){
 export function updateDeliveryOption(productId, deliveryOptionId){
   let matchedItem;
 
-  console.log("Inside actual method: " +productId +":"+ deliveryOptionId);
     cart.forEach((cartItem) => {
-      if(productId === cartItem.productId){
-        console.log("Inside if");
-        console.log("cartItem.productId"+ cartItem.productId);
+      if(productId == cartItem.productId){
         matchedItem = cartItem;
       }
     });

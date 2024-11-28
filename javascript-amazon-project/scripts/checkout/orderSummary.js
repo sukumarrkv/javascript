@@ -1,10 +1,11 @@
 import { cart, removeFromCart, updateDeliveryOption } from "../../data/cart.js";
-import { products } from "../../data/products.js";
+import { products, getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 //The above type of importing without curly braces is called default importing.
 //More info can be found in money.js
-import {deliveryOptions} from '../../data/deliveryOptions.js';
+import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
+import { renderPaymentSummary } from "./paymentSummary.js";
 
 export function renderOrderSummary() {
   let orderSummaryHTML = '';
@@ -23,23 +24,11 @@ export function renderOrderSummary() {
   cart.forEach((cartItem) => {
     const productId = cartItem.productId;
 
-    let matchedProduct;
-
-    products.forEach((product) => {
-      if(productId === product.id){
-        matchedProduct = product;
-      }
-    });
+    let matchedProduct = getProduct(productId);
 
       const deliveryOptionId = cartItem.deliveryOptionId;
 
-      let matchingDeliveryOption;// = deliveryOptions[0];
-
-      deliveryOptions.forEach((deliveryOption) => {
-        if(deliveryOptionId == deliveryOption.id){
-          matchingDeliveryOption = deliveryOption;
-        }
-      });
+      const matchingDeliveryOption = getDeliveryOption(deliveryOptionId);
 
       const today = dayjs();
       const deliveryDate = today.add(matchingDeliveryOption.deliveryDays, 'days');
@@ -135,6 +124,7 @@ export function renderOrderSummary() {
       const productIdToBeDeleted = deleteLink.dataset.productId;
       removeFromCart(productIdToBeDeleted);
       document.querySelector(`.js-cart-item-container-${productIdToBeDeleted}`).remove();
+      renderPaymentSummary();
     });
   });
 
@@ -145,6 +135,7 @@ export function renderOrderSummary() {
       //const {productId, deliveryOptionId} = element.dataset;
       updateDeliveryOption(productId, deliveryOptionId);
       renderOrderSummary();
+      renderPaymentSummary();
     });
   });
 }
