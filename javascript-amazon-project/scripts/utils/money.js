@@ -1,5 +1,5 @@
 export function formatCurrency(priceCents) {
-  return (priceCents / 100).toFixed(2);
+  return (Math.round(priceCents) / 100).toFixed(2);
 }
 
 //Lets say you wan to export formatCurrency from money.js as default import, we need to write code as below line
