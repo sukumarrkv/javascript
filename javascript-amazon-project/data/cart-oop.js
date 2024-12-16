@@ -1,4 +1,5 @@
 //Object Oriented Programming
+//Organising out code into objects (tries to represent the real world)
 //Why do we write our code in OOP is we can relate our objects created in real worls scenarios
 //Eg: A cart can have items, we add an item to add, remove an item from cart etc
 const cart = {
