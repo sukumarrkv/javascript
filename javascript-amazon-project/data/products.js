@@ -109,7 +109,21 @@ const object1 = {
 }
 */
 
+function logThis(){
+  console.log(this); //this will be undefined
+}
 
+logThis();
+//We can change this value using call method
+logThis.call('Hello');
+
+//Arrow functions do change the value of this
+this; //willbe undefined and so is below this
+const object2 = {
+  method: () => {
+    console.log(this);
+  }
+}
 
 export const products = [
   {
