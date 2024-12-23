@@ -1,5 +1,5 @@
 import {cart, addToCart} from '../data/cart.js';
-import { products} from '../data/products.js';
+import { products,loadProducts} from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
 //We need liver server inorder for modules to work
@@ -43,91 +43,95 @@ import { formatCurrency } from './utils/money.js';
 //   priceCents: 799
 // }];
 
-//we are getting this products from products.js
-let productsHtml = '';
-products.forEach((product) => {
-  productsHtml += `
-       <div class="product-container">
-          <div class="product-image-container">
-            <img class="product-image"
-              src="${product.image}">
-          </div>
+loadProducts(loadProductsGrid);
 
-          <div class="product-name limit-text-to-2-lines">
-            ${product.name}
-          </div>
-
-          <div class="product-rating-container">
-            <img class="product-rating-stars"
-              src="${product.getStars()}">
-            <div class="product-rating-count link-primary">
-              ${product.rating.count}
+function loadProductsGrid() {
+  //we are getting this products from products.js
+  let productsHtml = '';
+  products.forEach((product) => {
+    productsHtml += `
+        <div class="product-container">
+            <div class="product-image-container">
+              <img class="product-image"
+                src="${product.image}">
             </div>
-          </div>
 
-          <div class="product-price">
-            ${product.getPrice()}
-          </div>
+            <div class="product-name limit-text-to-2-lines">
+              ${product.name}
+            </div>
 
-          <div class="product-quantity-container">
-            <select>
-              <option selected value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </div>
+            <div class="product-rating-container">
+              <img class="product-rating-stars"
+                src="${product.getStars()}">
+              <div class="product-rating-count link-primary">
+                ${product.rating.count}
+              </div>
+            </div>
 
-          ${product.extraInfoHTML()} 
-          
-          <div class="product-spacer"></div>
+            <div class="product-price">
+              ${product.getPrice()}
+            </div>
 
-          <div class="added-to-cart">
-            <img src="images/icons/checkmark.png">
-            Added
-          </div>
+            <div class="product-quantity-container">
+              <select>
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
 
-          <button class="add-to-cart-button button-primary js-add-to-cart-button"
-                  data-product-id="${product.id}">
-            Add to Cart
-          </button>
-        </div>`;
-});
+            ${product.extraInfoHTML()} 
+            
+            <div class="product-spacer"></div>
 
-document.querySelector('.js-products-grid').innerHTML = productsHtml;
+            <div class="added-to-cart">
+              <img src="images/icons/checkmark.png">
+              Added
+            </div>
 
-//We might think moving this function into cart.js but that is wrong because we are using this function to update
-//the page.So it must be inside this js file only
-function updateCartQuantity(){
-  let cartQuantity = 0;
-
-    cart.forEach((cartItem) => {
-      cartQuantity += cartItem.quantity;
-    });
-
-    //console.log(cartQuantity);
-
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-}
-
-//Now to find which product user has added to cart we will use data-attribute from HTML
-//which uniquely identifies the each product
-//Syntax rule for adding data-attribute in hmtl
-//HTML attribute should start with data- and followed any any meaningful name (eg: see above)
-//To get the data-attribute we should use dataset method
-document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
-  buttonElement.addEventListener('click', () =>  {
-    // console.log("Added to cart");
-    // console.log(buttonElement.dataset.productName);
-    //data-attribute defined in kebab-case (data-product-id) will be converted into camel case (productId)
-    const productId = buttonElement.dataset.productId;
-    addToCart(productId);
-    updateCartQuantity();
+            <button class="add-to-cart-button button-primary js-add-to-cart-button"
+                    data-product-id="${product.id}">
+              Add to Cart
+            </button>
+          </div>`;
   });
-});
+
+  document.querySelector('.js-products-grid').innerHTML = productsHtml;
+
+  //We might think moving this function into cart.js but that is wrong because we are using this function to update
+  //the page.So it must be inside this js file only
+  function updateCartQuantity(){
+    let cartQuantity = 0;
+
+      cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity;
+      });
+
+      //console.log(cartQuantity);
+
+      document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+  }
+
+  //Now to find which product user has added to cart we will use data-attribute from HTML
+  //which uniquely identifies the each product
+  //Syntax rule for adding data-attribute in hmtl
+  //HTML attribute should start with data- and followed any any meaningful name (eg: see above)
+  //To get the data-attribute we should use dataset method
+  document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
+    buttonElement.addEventListener('click', () =>  {
+      // console.log("Added to cart");
+      // console.log(buttonElement.dataset.productName);
+      //data-attribute defined in kebab-case (data-product-id) will be converted into camel case (productId)
+      const productId = buttonElement.dataset.productId;
+      addToCart(productId);
+      updateCartQuantity();
+    });
+  });
+}
