@@ -1,5 +1,5 @@
 import {cart, addToCart} from '../data/cart.js';
-import { products,loadProducts} from '../data/products.js';
+import { products, loadProducts} from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
 //We need liver server inorder for modules to work
@@ -43,9 +43,9 @@ import { formatCurrency } from './utils/money.js';
 //   priceCents: 799
 // }];
 
-loadProducts(loadProductsGrid);
+loadProducts(renderProductsGrid);
 
-function loadProductsGrid() {
+function renderProductsGrid() {
   //we are getting this products from products.js
   let productsHtml = '';
   products.forEach((product) => {

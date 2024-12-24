@@ -140,13 +140,12 @@ export function loadProducts(fun){
       }
       return new Product(productDetails);
     });
-    console.log(products);
+    console.log("Products have been loaded from backend");
+    fun();
   });
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
-  
-  fun();
 }
 
 
