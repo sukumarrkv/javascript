@@ -127,8 +127,30 @@ const object2 = {
 
 
 //We will use backend to get products data:
-
 export let products = [];
+
+//We will use fetch (it uses promises) instead of XMLHttpRequest (it uses callbacks):
+
+export function loadProductsFetch(){
+  //fetch by default send a get request
+  const promise = fetch('https://supersimplebackend.dev/products').then((response) => { //response contains a bunch of data related to the request we made
+    return response.json(); //response.json retruns an promise so we are returning and doing next steps in then block below
+  }).then((productsData) => {
+    products = productsData.map((productDetails) => {
+      if(productDetails.type === 'clothing'){
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });
+    console.log("Products have been loaded from backend using fetch");
+  });
+
+  return promise; //As fetch returns a promise it is better to return that promise and do the next steps in as shown below instead of calling a function as seen in XMLHttpRequest
+}
+
+loadProductsFetch().then(() => {
+  console.log('Next steps in fetch');
+});
 
 export function loadProducts(fun){
   const xhr = new XMLHttpRequest();
