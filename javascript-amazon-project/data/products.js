@@ -143,6 +143,8 @@ export function loadProductsFetch(){
       return new Product(productDetails);
     });
     console.log("Products have been loaded from backend using fetch");
+  }).catch((error) => { //Error handling in promises
+    console.log('Unexpected error. Please try again later');
   });
 
   return promise; //As fetch returns a promise it is better to return that promise and do the next steps in as shown below instead of calling a function as seen in XMLHttpRequest
@@ -166,10 +168,14 @@ export function loadProducts(fun){
     fun();
   });
 
+  //Error handling
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpected error. Please try again later');
+  });
+
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
 }
-
 
 /*
 export const products = [

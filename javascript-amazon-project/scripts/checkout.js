@@ -65,6 +65,7 @@ new Promise((resolve) => {
 */
 
 //If we want we can load the products and cart at the same time using Promise.all
+/*
 Promise.all([
   new Promise((resolve) => {
     loadProducts(() => {
@@ -81,7 +82,9 @@ Promise.all([
   renderOrderSummary();
   renderPaymentSummary(); 
 })
+*/
 
+/*
 //Async and await:
 //Async and await help us to write asynchronous code in better way
 async function logMessage() {
@@ -133,3 +136,31 @@ logTheMessage().then((value) => {
   console.log(value);
   console.log('Nexts steps from async await function');
 });
+*/
+
+//Lets comment Promise.all code and use async await
+async function loadPage() {
+  try { //In async await we uae try cathc for error handling
+    //throw 'error1'; //manually throwing error
+    await loadProductsFetch();
+
+    const result = await new Promise((resolve, reject) => {
+      //throw 'error2'; //manually throwing error (in synchrnous way)
+      //To throw error which might occur in future (asynchronous way) we use reject
+      loadCart(() => {
+        //reject('error3');
+        resolve('value1'); //to access this we need to assign this promise to a variable
+      })
+    });
+  } catch (error) {
+    console.log('Unexpected error. Please try again later');
+  }
+
+
+  renderOrderSummary();
+  renderPaymentSummary(); 
+}
+
+//Above code looks more cleaner and readable
+
+loadPage();
