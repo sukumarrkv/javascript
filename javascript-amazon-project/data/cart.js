@@ -1,7 +1,7 @@
 export let cart;
 
 //we created this function to solve the issue with writing tests.
-//While writing tests we import cart first and write mcks for localStorage, hence mock doesn't have any effect
+//While writing tests we import cart first and write mocks for localStorage, hence mock doesn't have any effect
 //To solve the issue after mocking we will reload the cart using below function
 export function loadFromStorage() {
   cart = JSON.parse(localStorage.getItem('cart'));

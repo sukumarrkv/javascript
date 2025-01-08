@@ -3,6 +3,7 @@ import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOptions.js";
 import { formatCurrency } from "../utils/money.js";
 import { addOrder } from "../../data/orders.js";
+import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 
 export function renderPaymentSummary(){
   let productPriceCents = 0;
@@ -56,6 +57,7 @@ export function renderPaymentSummary(){
 
   document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHtml;
 
+  /*
   document.querySelector('.js-place-order')
   .addEventListener('click', async () => {
     try {
@@ -78,4 +80,45 @@ export function renderPaymentSummary(){
 
     window.location.href = 'orders.html'; //file path to html you want to display
   });
+  */
+
+  document.querySelector('.js-place-order')
+  .addEventListener('click', () => {
+    cart.forEach((cartItem) => {
+      const today = dayjs();
+      const formattedDate = today.format('dddd, MMMM D');
+      const order = {
+        orderId: 1,
+        orderedTime: formattedDate,
+        total: totalCents,
+        products: getAllProducts(cart)
+      };
+      console.log(order);
+    })
+  });
+}
+
+
+
+function getProductDetailsForOrdering(productId, quantity, deliveryDate) {
+  const matchingProduct = getProduct(productId);
+  const product = {
+    name: matchingProduct.name,
+    quantity: quantity,
+    arrivingOn: deliveryDate
+  }
+
+  return product;
+}
+
+function getAllProducts(cart) {
+  const products = [];
+  cart.forEach((cartItem) => {
+    const today = dayjs();
+    const deliveryOption = getDeliveryOption(cartItem.deliveryOptionId);
+    const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
+    const formattedDate = deliveryDate.format('dddd, MMMM D');
+    products.push(getProductDetailsForOrdering(cartItem.productId, cartItem.quantity, formattedDate));
+  });
+  return products;
 }
