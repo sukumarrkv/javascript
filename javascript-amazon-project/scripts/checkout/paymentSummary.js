@@ -2,7 +2,7 @@ import { cart } from "../../data/cart.js";
 import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOptions.js";
 import { formatCurrency } from "../utils/money.js";
-import { addOrder } from "../../data/orders.js";
+import { addOrder } from "../../data/order.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 
 export function renderPaymentSummary(){
@@ -84,17 +84,17 @@ export function renderPaymentSummary(){
 
   document.querySelector('.js-place-order')
   .addEventListener('click', () => {
-    cart.forEach((cartItem) => {
       const today = dayjs();
       const formattedDate = today.format('dddd, MMMM D');
       const order = {
         orderId: 1,
         orderedTime: formattedDate,
-        total: totalCents,
+        total: formatCurrency(totalCents),
         products: getAllProducts(cart)
       };
-      console.log(order);
-    })
+      //console.log(order);
+      addOrder(order);
+      window.location.href = 'orders.html'; //file path to html you want to display
   });
 }
 
@@ -107,7 +107,6 @@ function getProductDetailsForOrdering(productId, quantity, deliveryDate) {
     quantity: quantity,
     arrivingOn: deliveryDate
   }
-
   return product;
 }
 
