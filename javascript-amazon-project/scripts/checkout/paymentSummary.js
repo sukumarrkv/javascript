@@ -92,11 +92,11 @@ export function renderPaymentSummary(){
         total: formatCurrency(totalCents),
         products: getAllProducts(cart)
       };
-      //console.log(order);
+      console.log(order);
       addOrder(order);
-      window.location.href = 'orders.html'; //file path to html you want to display
+      //window.location.href = 'orders.html'; //file path to html you want to display
   });
-}
+ }
 
 
 
