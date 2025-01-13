@@ -92,9 +92,9 @@ export function renderPaymentSummary(){
         total: formatCurrency(totalCents),
         products: getAllProducts(cart)
       };
-      console.log(order);
+      //console.log(order);
       addOrder(order);
-      //window.location.href = 'orders.html'; //file path to html you want to display
+      window.location.href = 'orders.html'; //file path to html you want to display
   });
  }
 
@@ -105,7 +105,8 @@ function getProductDetailsForOrdering(productId, quantity, deliveryDate) {
   const product = {
     name: matchingProduct.name,
     quantity: quantity,
-    arrivingOn: deliveryDate
+    deliveryDate: deliveryDate,
+    image: matchingProduct.image
   }
   return product;
 }
