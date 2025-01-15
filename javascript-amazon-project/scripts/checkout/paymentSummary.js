@@ -75,7 +75,7 @@ export function renderPaymentSummary(){
       addOrder(order);
 
     } catch (error) {
-      console.log('Unexcepted erro occurred. Please try again later');
+      console.log('Unexcepted error occurred. Please try again later');
     }
 
     window.location.href = 'orders.html'; //file path to html you want to display
@@ -86,13 +86,14 @@ export function renderPaymentSummary(){
   .addEventListener('click', () => {
       const today = dayjs();
       const formattedDate = today.format('dddd, MMMM D');
+      const randomId = "id"+ Math.floor(Math.random()*1000000);
       const order = {
-        orderId: 1,
+        orderId: randomId,
         orderedTime: formattedDate,
         total: formatCurrency(totalCents),
         products: getAllProducts(cart)
       };
-      //console.log(order);
+      console.log(order);
       addOrder(order);
       window.location.href = 'orders.html'; //file path to html you want to display
   });

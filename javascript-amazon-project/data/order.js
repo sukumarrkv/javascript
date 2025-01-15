@@ -3,6 +3,7 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 export let orders = JSON.parse(localStorage.getItem('orders'));
 
 if(!orders) {
+  console.log('orders:'+ !orders);
   const today = dayjs();
   const formattedDate = today.format('dddd, MMMM D');
   orders = [{
@@ -20,10 +21,11 @@ if(!orders) {
 
 export function addOrder(order) {
   const matchingOrder = getOrder(order.orderId);
-  if(!order) {
+  if(!matchingOrder) {
     orders.unshift(order);
     saveToStorage();
   }
+  console.log(orders);
 }
 
 function saveToStorage() {

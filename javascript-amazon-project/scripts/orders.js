@@ -3,9 +3,8 @@ import { orders } from "../data/order.js";
 
 let ordersHTML = '';
 orders.forEach((orderItem) => {
-  console.log(orders);
    ordersHTML += `
-  <div class="order-container js-order-container">
+  <div class="order-container">
             
     <div class="order-header">
       <div class="order-header-left-section">
@@ -26,16 +25,15 @@ orders.forEach((orderItem) => {
     </div>
 
     <div class="order-details-grid">
-    ${displayProductsFromOrders()}
+    ${displayProductsFromOrders(orderItem)}
     </div>
   </div>
 `;
 });
 
-function displayProductsFromOrders() {
+function displayProductsFromOrders(orderItem) {
   let productsHTML = '';
-  orders.forEach((orderItem) => {
-    orderItem.products.forEach((productItem) => {
+  orderItem.products.forEach((productItem) => {
       productsHTML += `
       <div class="product-image-container">
           <img src=${productItem.image}>
@@ -66,9 +64,8 @@ function displayProductsFromOrders() {
       </div>
       `;
     });
-  });
 
   return productsHTML;
 }
 
-document.querySelector('.js-order-container').innerHTML = ordersHTML;
+document.querySelector('.js-order-grid').innerHTML = ordersHTML;
