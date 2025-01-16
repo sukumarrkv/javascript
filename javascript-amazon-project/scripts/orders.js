@@ -25,13 +25,13 @@ orders.forEach((orderItem) => {
     </div>
 
     <div class="order-details-grid">
-    ${displayProductsFromOrders(orderItem)}
+    ${displayProductsFromOrder(orderItem)}
     </div>
   </div>
 `;
 });
 
-function displayProductsFromOrders(orderItem) {
+function displayProductsFromOrder(orderItem) {
   let productsHTML = '';
   orderItem.products.forEach((productItem) => {
       productsHTML += `
