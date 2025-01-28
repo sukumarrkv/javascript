@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator App</title>
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
+    <h1>Calculator App</h1>
+    <div class="calulator-main-container">
+      <table>
+        <tr>
+          <td>
+            <input class="input">
+          </td>
+          <td>
+            <button onclick="clearInput()">Clear</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="display('7')">7</button>
+          </td>
+          <td>
+            <button onclick="display('8')">8</button>
+          </td>
+          <td>
+            <button onclick="display('9')">9</button>
+          </td>
+          <td>
+            <button onclick="display('*')">*</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="display('4')">4</button>
+          </td>
+          <td>
+            <button onclick="display('5')">5</button>
+          </td>
+          <td>
+            <button onclick="display('6')">6</button>
+          </td>
+          <td>
+            <button onclick="display('-')">-</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="display('1')">1</button>
+          </td>
+          <td>
+            <button onclick="display('2')">2</button>
+          </td>
+          <td>
+            <button onclick="display('3')">3</button>
+          </td>
+          <td>
+            <button onclick="display('+')">+</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="display('0')">0</button>
+          </td>
+          <td>
+            <button onclick="display('.')">.</button>
+          </td>
+          <td>
+            <button onclick="calculate()">=</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
