@@ -1,10 +1,15 @@
-function display(value) {
-  document.querySelector('.input').value += value;
+function display(input) {
+  document.querySelector('.input').value += input;
 }
 
 function calculate() {
-  let expression = document.querySelector('.input').value;
-  const result = eval(expression);
+  const expression = document.querySelector('.input').value;
+  let result = '';
+  try {
+    result = eval(expression);
+  } catch(err) {
+    alert(err.message);
+  }
 
   document.querySelector('.input').value = result;
 }

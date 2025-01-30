@@ -9,7 +9,7 @@
     <div class="main-container">
       <div class="search-row">
         <input class="input">
-        <button class="clear-button">Clear</button>
+        <button class="clear-button" onclick="clearInput()">Clear</button>
       </div>
       <div class="row-one">
         <button onclick="display('7')">7</button>
@@ -17,6 +17,25 @@
         <button onclick="display('9')">9</button>
         <button onclick="display('*')">*</button>
       </div>
+      <div class="row-two">
+        <button onclick="display('4')">4</button>
+        <button onclick="display('5')">5</button>
+        <button onclick="display('6')">6</button>
+        <button onclick="display('-')">-</button>
+      </div>
+      <div class="row-three">
+        <button onclick="display('1')">1</button>
+        <button onclick="display('2')">2</button>
+        <button onclick="display('3')">3</button>
+        <button onclick="display('+')">+</button>
+      </div>
+      <div class="row-four">
+        <button onclick="display('0')">0</button>
+        <button onclick="display('.')">.</button>
+        <button onclick="display('/')">/</button>
+        <button onclick="calculate()">=</button>
+      </div>
     </div>
+    <script src="app.js"></script>
   </body>
 </html>

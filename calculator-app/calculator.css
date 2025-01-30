@@ -1,9 +1,32 @@
+button {
+  background-color: white;
+  color: black;
+  border-style: solid;
+  border-radius: 4px;
+  border-width: 1px;
+}
+
+button:hover {
+  background-color: lightgrey
+}
+.input {
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: black;
+}
 .search-row {
   display: grid;
   grid-template-columns: 150px 50px;
 }
 
-.row-one {
+.row-one, .row-two, .row-three {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+}
+
+.row-four {
   display: grid;
   grid-template-columns: 50px 50px 50px 50px;
 }
