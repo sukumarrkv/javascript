@@ -69,3 +69,46 @@ const getActiveJobs = jobs.filter((job) => {
 });
 
 console.log(getActiveJobs);
+
+//Arrow functions with this
+const personArrow = {
+  talk() {
+    setTimeout(function() {
+      console.log('this', this);
+    }, 1000);
+  }
+}
+
+personArrow.talk();
+//Without timeout this will print the reference to person obejct (deafult behaviour of this when called with object)
+//Now with setTimeout the function (should not be a arrow function) we pass a first parameter is a separate/independant function. Hence when we this with setTimeout we get window object.
+
+//To have this point to the object
+//1) set a variable in talk() method var self = this; and call self in console.log statement
+//2) Use arrow function in setTimepot instead of normal regular function
+
+//Array.map
+
+const colors = ["red", "green", "green"];
+const items = colors.map(color => `<li>${color}</li>`);
+console.log(items);
+
+//Object destructing
+
+const address = {
+  street:'',
+  city: '',
+  country: ''
+}
+
+//Lets say if we want to have street, city, country defined in separate variables we usallly do like below
+// const street = address.street;
+// const city = address.city;
+// const country = address.country;
+
+//But using object descturing we simply this
+
+const {street, city, country} = address;
+//We can have one or nore than one properties defined in above folower bracket
+//We can have custom names lets say if we want to have street names st
+const {street: st} = address;
