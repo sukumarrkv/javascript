@@ -1,3 +1,4 @@
+import { Teacher } from "./teacher.js";
 /*
 function sayHello() {
   for(var i=0; i<5; i++) {
@@ -106,9 +107,43 @@ const address = {
 // const city = address.city;
 // const country = address.country;
 
-//But using object descturing we simply this
+//But using object descturing we simply do like this
 
 const {street, city, country} = address;
 //We can have one or nore than one properties defined in above folower bracket
 //We can have custom names lets say if we want to have street names st
 const {street: st} = address;
+
+//Spread Operator
+const first = [1,2,3];
+const second = [4,5,6];
+
+const combine = first.concat(second);
+const combined = [...first, ...second];
+//You can ask what is difference between above combine and new combined. Well lets say if you want to add a new element in between spread becomes more useful
+const combinedNew = [...first, 'a', ...second, 'b'];
+console.log(combinedNew);
+
+//Cloning array
+const arrayClone  = [...first];
+console.log(arrayClone);
+console.log(first);
+
+//Combining two objects using spread
+const firstObject = {firstName: 'Sukumar'}
+const secondObject = {lastName: 'Test'}
+
+const newObject = {...firstObject, ...secondObject};
+//We can add new properties to above newObject
+//const newObject = {...firstObject, ...secondObject, address:'Earth'}
+console.log(newObject);
+
+//We can clone object just like array
+const clonedObject = {...firstObject};
+
+//Classes - Imp
+//Modules - Creating different files for different functionalities, export (named exports, default exports)
+const newTeacher = new Teacher('test', 'test');
+newTeacher.teach();
+//names exports are defined using {}
+//default exports (when we want to import just one object from a class) are defined without
